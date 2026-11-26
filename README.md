@@ -30,7 +30,11 @@ vigilante de precios (cada 15 s): avisa al instante si se toca tu stop u objetiv
 
 Necesitas Python ≥ 3.11 y [`uv`](https://docs.astral.sh/uv/) (o pip).
 
-**1. Instala el motor.**
+**1. Descarga el código e instala el motor.**
+
+```bash
+git clone https://github.com/paulollito29-sketch/trading-bot.git
+```
 
 ```bash
 cd trading-bot/engine
@@ -81,7 +85,7 @@ cp ../.env.example .env
 
 ### 24/7 con Docker (tu PC o un VPS de ~5 USD/mes)
 
-Desde `trading-bot/`, después de crear `.env`:
+Desde la carpeta del repo (`trading-bot/`), con un `.env` en esa misma carpeta (`cp .env.example .env`):
 
 ```bash
 docker compose up -d --build
@@ -154,7 +158,7 @@ Son 51 pruebas:
 - **paridad exacta** entre el bot en vivo (repetido cada 20 min) y el backtest;
 - integraciones simuladas (Telegram, Supabase, ccxt).
 
-El CI ([`.github/workflows/trading-bot-ci.yml`](../.github/workflows/trading-bot-ci.yml)) corre lint, tests y el build del panel.
+El CI ([`.github/workflows/ci.yml`](.github/workflows/ci.yml)) corre lint, tests y el build del panel en cada push y pull request.
 
 ## Estructura
 
