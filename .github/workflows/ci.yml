@@ -40,3 +40,17 @@ jobs:
           cache-dependency-path: dashboard/package-lock.json
       - run: npm ci
       - run: npm run build
+
+  docker:
+    name: Imagen Docker — build + arranque
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cp .env.example .env
+      - name: Construir la imagen (Dockerfile real)
+        run: docker compose build
+      - name: Arranca, carga LightGBM y escribe en data/, models/ y reports/ (Docker las crea como root)
+        run: >-
+          docker compose run --rm -T engine sh -c
+          'id -un && for d in data models reports; do touch /app/$d/.ok; done
+          && python -c "import lightgbm" && cryptobot --help > /dev/null && echo OK'

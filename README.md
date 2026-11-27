@@ -85,10 +85,10 @@ cp ../.env.example .env
 
 ### 24/7 con Docker (tu PC o un VPS de ~5 USD/mes)
 
-Desde la carpeta del repo (`trading-bot/`), con un `.env` en esa misma carpeta (`cp .env.example .env`):
+Desde la carpeta del repo (`trading-bot/`), con un `.env` en esa misma carpeta (`cp .env.example .env`). La primera vez: construye la imagen, baja el histórico y entrena.
 
 ```bash
-docker compose up -d --build
+docker compose build
 ```
 
 ```bash
@@ -97,6 +97,12 @@ docker compose run --rm engine cryptobot download
 
 ```bash
 docker compose run --rm engine cryptobot research --profile lemon
+```
+
+Después déjalo corriendo (se reinicia solo si se cae) y mira qué hace:
+
+```bash
+docker compose up -d
 ```
 
 ```bash
