@@ -99,6 +99,8 @@ docker compose run --rm engine cryptobot download
 docker compose run --rm engine cryptobot research --profile lemon
 ```
 
+Los datos, los modelos y los reportes quedan en volúmenes de Docker: se conservan al reiniciar o actualizar. **No uses `docker compose down -v`**, porque los borra (incluido tu historial).
+
 Después déjalo corriendo (se reinicia solo si se cae) y mira qué hace:
 
 ```bash

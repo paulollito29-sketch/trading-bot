@@ -49,7 +49,7 @@ jobs:
       - run: cp .env.example .env
       - name: Construir la imagen (Dockerfile real)
         run: docker compose build
-      - name: Arranca, carga LightGBM y escribe en data/, models/ y reports/ (Docker las crea como root)
+      - name: Arranca como bot, carga LightGBM y escribe en los volúmenes data, models y reports
         run: >-
           docker compose run --rm -T engine sh -c
           'id -un && for d in data models reports; do touch /app/$d/.ok; done

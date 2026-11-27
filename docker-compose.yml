@@ -9,13 +9,21 @@ services:
     build: ./engine
     env_file: .env
     restart: unless-stopped
+    # Volúmenes de Docker (no carpetas de tu equipo): funcionan igual en Windows, Mac y Linux,
+    # con los permisos correctos y SQLite sin problemas de bloqueo. Sobreviven a reinicios y a
+    # "docker compose down"; solo "docker compose down -v" los borra.
     volumes:
-      - ./engine/data:/app/data
-      - ./engine/models:/app/models
-      - ./engine/reports:/app/reports
+      - data:/app/data
+      - models:/app/models
+      - reports:/app/reports
     command: ["cryptobot", "run"]
     logging:
       driver: json-file
       options:
         max-size: "10m"
         max-file: "3"
+
+volumes:
+  data:
+  models:
+  reports:
